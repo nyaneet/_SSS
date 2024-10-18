@@ -5,6 +5,7 @@ import 'package:sss/presentation/core/models/ship/ship.dart';
 ///
 /// Vessel details collection that stored in postgres DB.
 /// TODO: Postgres database access implementation
+/// 
 class PgVesselDetails {
   Future<Result<Ship, Failure<String>>> fetchShip() async {
     return Ok(
