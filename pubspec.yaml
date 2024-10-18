@@ -1,0 +1,51 @@
+name: sss
+description: "A new Flutter project."
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0-329.0.dev
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  hmi_core:
+    git:
+      url: https://github.com/a-givertzman/hmi_core.git
+      ref: 2.0.0
+  hmi_widgets:
+    git:
+      url: https://github.com/a-givertzman/hmi_widgets.git
+      ref: 1.0.1
+  ext_rw:
+    git:
+      url: https://github.com/a-givertzman/dart_ext_rw.git
+      ref: 1.0.3
+  fl_chart:
+    git:
+      url: https://github.com/a-givertzman/fl_chart.git
+      ref: 0.63.0+2
+  window_manager: ^0.3.0
+  davi: ^3.5.0
+  collection: ^1.18.0
+  vector_math: ^2.1.4
+  path_drawing: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/img/
+    - assets/settings/
+    - assets/translations/
