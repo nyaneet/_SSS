@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hmi_core/hmi_core_app_settings.dart';
 import 'package:hmi_core/hmi_core_result_new.dart';
 import 'package:hmi_core/hmi_core_translate.dart';
+import 'package:hmi_widgets/hmi_widgets.dart';
 import 'package:sss/presentation/core/models/voyage/voyage.dart';
+import 'package:sss/presentation/core/validation/real_validation_case.dart';
 import 'package:sss/presentation/core/widgets/edit_on_tap_field.dart';
 
 import 'package:sss/presentation/core/widgets/future_builder_widget.dart';
@@ -129,6 +131,21 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
   Widget _buildValueWidget(MapEntry<String, String?> item,
       {double padding = 0}) {
     switch (item.key) {
+      case 'intake_water_density':
+        return EditOnTapField(
+          initialValue: item.value ?? '',
+          onSubmitted: (value) => Ok(value),
+          validator: Validator(
+            cases: [
+              ///todo: add more cases e.g min, max 
+              RealValidationCase(),
+            ],
+          ),
+          onSubmit: (String value) async {
+            return Ok(value);
+          },
+        );
+
       case 'voyage_description':
         return EditOnTapField(
           initialValue: item.value ?? '',
@@ -143,10 +160,10 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
           initialValue: CargoGrade.fromString(item.value).name,
           onChanged: (value) async => Ok(value),
         );
-      case 'aquarium':
+      case 'aquatorium':
         return _BuildDropdownButton(
-          items: Aquariam.values.map((e) => e.name).toList(),
-          initialValue: Aquariam.fromString(item.value).name,
+          items: Aquatorium.values.map((e) => e.name).toList(),
+          initialValue: Aquatorium.fromString(item.value).name,
           onChanged: (value) async => Ok(value),
         );
       case 'icing':

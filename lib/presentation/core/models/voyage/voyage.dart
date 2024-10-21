@@ -4,7 +4,7 @@ abstract interface class Voyage {
   String? get code;
 
   /// Selection of water area (port or sea)
-  Aquariam get aquatorium;
+  Aquatorium get aquatorium;
 
   /// The density of the intake water used in the calculations.
   double get density;
@@ -33,7 +33,7 @@ final class JsonVoyage implements Voyage {
   JsonVoyage(this._json);
 
   @override
-  Aquariam get aquatorium => Aquariam.fromString(_json['aquarium']);
+  Aquatorium get aquatorium => Aquatorium.fromString(_json['aquatorium']);
 
   @override
   CargoGrade get cargoGrade => CargoGrade.fromString(_json['cargo_grade']);
@@ -87,18 +87,18 @@ enum CargoGrade {
   }
 }
 
-enum Aquariam {
+enum Aquatorium {
   port,
   sea;
 
-  factory Aquariam.fromString(String? value) {
+  factory Aquatorium.fromString(String? value) {
     switch (value) {
       case 'port':
-        return Aquariam.port;
+        return Aquatorium.port;
       case 'sea':
-        return Aquariam.sea;
+        return Aquatorium.sea;
       default:
-        return Aquariam.port;
+        return Aquatorium.port;
     }
   }
 }

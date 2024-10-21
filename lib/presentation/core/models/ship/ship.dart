@@ -94,7 +94,7 @@ class Ship {
       'build_yard': buildYard,
       'build_place': buildPlace,
       'build_year': buildYear,
-      'builder_number': builderNumber,
+      'ship_builder_number': builderNumber,
       'ship_master': master,
       'ship_chief_mate': chiefMate,
     };
