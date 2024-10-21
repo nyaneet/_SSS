@@ -73,8 +73,12 @@ class Ship {
 
   String get chiefMate => _chiefMate ?? '';
 
+  /// List of fields that can be edited.
   List<String> editableFields = ['ship_master', 'ship_chief_mate'];
 
+  /// Checks if the given [field] is found in [editableFields] list
+  /// returns true if found, false otherwise.
+  /// used to determine if a field can be edited.
   bool isFieldEditable(String field) {
     return editableFields.contains(field);
   }

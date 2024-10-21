@@ -22,9 +22,11 @@ abstract interface class Voyage {
   /// A description of the voyage or cargo plan or any comment
   String? get description;
 
+  /// The key-value pairs of the [Voyage]
   Map<String, String> toMap();
 
-  bool isEntryDescription(String entry);
+  /// Returns true if the given [field] is the description of the voyage
+  bool isFieldDescription(String field);
 
   /// Returns the unit of the given [field]
   /// if the [field] is not in the map, returns empty [String]
@@ -62,7 +64,7 @@ final class JsonVoyage implements Voyage {
   Map<String, String> toMap() => _json;
 
   @override
-  bool isEntryDescription(String entry) => entry == 'voyage_description';
+  bool isFieldDescription(String entry) => entry == 'voyage_description';
 
   @override
   String unitsBy(String field) {

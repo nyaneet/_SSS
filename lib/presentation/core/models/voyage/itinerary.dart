@@ -1,11 +1,24 @@
 ///
-///Common data of the given [Itinerary]
+/// Common data of the given [Itinerary]
+/// The information is used to generate
+/// reports and to assist in the preparation of container loading plans.
 abstract interface class Itinerary {
+  /// Index of the [Itinerary]
   int get index;
+
+  /// Name of the port
   String get port;
+
+  /// Code of the port
   String get portCode;
+
+  /// Estimated time of departure [ETD]
   DateTime get departure;
+
+  /// Estimated time of arrival [ETA]
   DateTime get arrival;
+
+  /// Draft limitation
   int get draftLimit;
 }
 

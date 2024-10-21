@@ -59,7 +59,7 @@ class _VoyageDetailsWidgetState extends State<VoyageDetailsWidget> {
               padding: EdgeInsets.all(padding / 2),
               child: Row(
                 children: [
-                  if (!widget.details.isEntryDescription(item.key))
+                  if (!widget.details.isFieldDescription(item.key))
                     Expanded(
                       child: Text(
                         '${Localized(item.key).v} ${AppSubscripting.getMathsExpression(
