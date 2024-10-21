@@ -158,7 +158,7 @@
   "ship_builder_number": ["Builder number", "Заводской номер"],
   "ship_master": ["Master", "Капитан"],
   "ship_chief_mate": ["Chief mate", "Старший помощник капитана"],
-  "aquarium": ["Aquarium", "Акватория"],
+  "aquatorium": ["Aquatorium", "Акватория"],
   "intake_water_density": [
     "Intake water density",
     "Плотность забортной воды [т/м^3]"

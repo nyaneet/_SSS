@@ -115,7 +115,7 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
                 children: [
                   if (!widget.details.isEntryDescription(item.key))
                     Expanded(
-                      child: Text(item.key),
+                      child: Text(Localized(item.key).v),
                     ),
                   Flexible(
                     child: _buildValueWidget(item, padding: padding),
