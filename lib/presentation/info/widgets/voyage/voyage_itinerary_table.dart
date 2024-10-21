@@ -71,7 +71,7 @@ class _VoyageItineraryTableState extends State<VoyageItineraryTable> {
           name: Localized('ETD').v,
           cellBuilder: (context, row) => _buildStyledCell(
             row.data.departure.formatRU(),
-            color: Colors.purple,
+            color: Colors.red,
           ),
         ),
         _hiddenColumns.first

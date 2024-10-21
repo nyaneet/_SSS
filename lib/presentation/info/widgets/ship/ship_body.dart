@@ -95,7 +95,7 @@ class _BuildItemsState extends State<_BuildItems> {
   }
 
   Widget _buildValueWidget(MapEntry<String, dynamic> item) {
-    if (widget.ship.isEntryEditable(item.key)) {
+    if (widget.ship.isFieldEditable(item.key)) {
       ///todo validation
       return EditOnTapField(
         initialValue: item.value ?? '',

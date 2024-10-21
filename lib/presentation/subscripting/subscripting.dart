@@ -44,8 +44,17 @@ class AppSubscripting {
     switch (str) {
       case 't/m^3':
         return '[${Localized('t/m').v}${getSuperscript('3')}]';
+      case 't/s^-2':
+        return '[${Localized('t/s').v}${getSuperscript('-2')}]';
       default:
         return Localized(str).v;
     }
   }
+}
+
+/// Units for subscripting and superscripting
+enum Units {
+  time,
+  speed,
+  density,
 }
