@@ -1,0 +1,39 @@
+import 'package:hmi_core/hmi_core.dart';
+import 'package:hmi_core/hmi_core_result_new.dart';
+import 'package:sss/presentation/subscripting/unicode.dart';
+
+///  To handle subscript and superscript for [Text] using Unicode
+class AppSubscripting {
+  static const _log = Log('AppSettings');
+  static final _map = <String, AppUnicode>{};
+
+  /// initialize the map from json
+  /// logs an error if failed
+  static Future<void> initialize({JsonMap<dynamic>? jsonMap}) async {
+    if (jsonMap != null) {
+      await jsonMap.decoded.then((result) => switch (result) {
+            Ok(value: final map) => _map.addAll(
+                map.entries
+                    .map((e) => {e.key: AppUnicode.fromMap(e.value)})
+                    .reduce(
+                      (prev, current) => {...prev, ...current},
+                    ),
+              ),
+            Err() =>
+              _log.warning('Failed to initialize app settings from file.'),
+          });
+    }
+  }
+
+  /// Returns the subscript of the given [str]
+  /// if the [str] is not in the map, returns the [str]
+  static String getSubscript(String str) {
+    return str.split('').map((e) => _map[e]?.subs ?? e).join();
+  }
+
+  /// Returns the superscript of the given [str]
+  /// if the [str] is not in the map, returns the [str]
+  static String getSuperscript(String str) {
+    return str.split('').map((e) => _map[e]?.sup ?? e).join();
+  }
+}

@@ -12,6 +12,7 @@ import 'package:sss/presentation/core/widgets/table/table_nullable_cell.dart';
 import 'package:sss/presentation/core/widgets/zebra_stripped_list.dart';
 import 'package:sss/presentation/info/widgets/voyage/pg_voyage_details.dart';
 import 'package:sss/presentation/info/widgets/voyage/voyage_itinerary_table.dart';
+import 'package:sss/presentation/subscripting/subscripting.dart';
 
 ///
 /// The widget that displays the body of the voyage
@@ -114,7 +115,25 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
                 children: [
                   if (!widget.details.isEntryDescription(item.key))
                     Expanded(
-                      child: Text(Localized(item.key).v),
+                      child: RichText(
+                        text: TextSpan(
+                          style: theme.textTheme.bodyMedium,
+                          children: [
+                            TextSpan(
+                              text: Localized(item.key).v,
+                            ),
+                            TextSpan(
+                              text: AppSubscripting.getSuperscript('3'),
+                              style: TextStyle(
+                                textBaseline: TextBaseline.ideographic,
+                                fontFeatures: [
+                                  FontFeature.superscripts(),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   Flexible(
                     child: _buildValueWidget(item, padding: padding),
@@ -137,7 +156,7 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
           onSubmitted: (value) => Ok(value),
           validator: Validator(
             cases: [
-              ///todo: add more cases e.g min, max 
+              ///todo: add more cases e.g min, max
               RealValidationCase(),
             ],
           ),

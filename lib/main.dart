@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' hide Localizations;
 import 'package:hmi_core/hmi_core.dart';
 import 'package:sss/app_widget.dart';
 import 'package:sss/presentation/core/theme/app_theme_switch.dart';
+import 'package:sss/presentation/subscripting/subscripting.dart';
 
 ///
 void main() async {
@@ -20,6 +21,14 @@ void main() async {
         jsonMap: JsonMap.fromTextFile(
           const TextFile.asset(
             'assets/settings/app-settings.json',
+          ),
+        ),
+      );
+
+      await AppSubscripting.initialize(
+        jsonMap: JsonMap.fromTextFile(
+          const TextFile.asset(
+            'assets/unicodes/unicodes.json',
           ),
         ),
       );
