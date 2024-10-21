@@ -115,25 +115,7 @@ class __BuildDetailsWidgetState extends State<_BuildDetailsWidget> {
                 children: [
                   if (!widget.details.isEntryDescription(item.key))
                     Expanded(
-                      child: RichText(
-                        text: TextSpan(
-                          style: theme.textTheme.bodyMedium,
-                          children: [
-                            TextSpan(
-                              text: Localized(item.key).v,
-                            ),
-                            TextSpan(
-                              text: AppSubscripting.getSuperscript('3'),
-                              style: TextStyle(
-                                textBaseline: TextBaseline.ideographic,
-                                fontFeatures: [
-                                  FontFeature.superscripts(),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: Text(item.key),
                     ),
                   Flexible(
                     child: _buildValueWidget(item, padding: padding),

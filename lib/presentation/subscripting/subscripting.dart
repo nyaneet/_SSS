@@ -36,4 +36,16 @@ class AppSubscripting {
   static String getSuperscript(String str) {
     return str.split('').map((e) => _map[e]?.sup ?? e).join();
   }
+
+  /// Returns a localised maths expression of the given [str]
+  /// This is for known maths expressions
+  /// if the [str] is not in the map, returns the [str]
+  static String getMathsExpression(String str) {
+    switch (str) {
+      case 't/m^3':
+        return '${Localized('t/m').v}${getSuperscript('3')}';
+      default:
+        return Localized(str).v;
+    }
+  }
 }
