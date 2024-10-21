@@ -44,8 +44,9 @@ class _VoyageItineraryTableState extends State<VoyageItineraryTable> {
         DaviColumn<Itinerary>(
           grow: 1.0,
           name: Localized('Port').v,
-          cellBuilder: (context, row) => NullableCellWidget(
-            value: row.data.port,
+          cellBuilder: (context, row) => _buildStyledCell(
+            row.data.port,
+            color: Colors.green,
           ),
         ),
         DaviColumn<Itinerary>(
@@ -59,16 +60,18 @@ class _VoyageItineraryTableState extends State<VoyageItineraryTable> {
           grow: 1.0,
           // name: Localized('Arrival').v,
           name: Localized('ETA').v,
-          cellBuilder: (context, row) => NullableCellWidget(
-            value: row.data.arrival.formatRU(),
+          cellBuilder: (context, row) => _buildStyledCell(
+            row.data.arrival.formatRU(),
+            // color: Colors.green,
           ),
         ),
         DaviColumn<Itinerary>(
           grow: 1.0,
           // name: Localized('Departure').v,
           name: Localized('ETD').v,
-          cellBuilder: (context, row) => NullableCellWidget(
-            value: row.data.departure.formatRU(),
+          cellBuilder: (context, row) => _buildStyledCell(
+            row.data.departure.formatRU(),
+            color: Colors.purple,
           ),
         ),
         _hiddenColumns.first
@@ -122,10 +125,35 @@ class _VoyageItineraryTableState extends State<VoyageItineraryTable> {
         Expanded(
           child: TableView(
             model: _model..replaceRows(_itineraries),
-            headerHeight: 48.0,
+            // headerHeight: 48.0,
+            cellHeight: 32.0,
+            cellPadding: EdgeInsets.zero,
             tableBorderColor: Colors.transparent,
           ),
         ),
+      ],
+    );
+  }
+
+  ///Build a styled cell with a [colored] leading container
+  Widget _buildStyledCell(String value, {Color color = Colors.blue}) {
+    final padding = Setting('padding').toDouble;
+    return Row(
+      children: [
+        Container(
+          width: padding * 0.75,
+          margin: EdgeInsets.symmetric(vertical: padding / 2),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(2),
+          ),
+        ),
+        SizedBox(width: padding),
+        Expanded(
+          child: NullableCellWidget(
+            value: value,
+          ),
+        )
       ],
     );
   }
