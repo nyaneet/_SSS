@@ -161,7 +161,7 @@
   "aquatorium": ["Aquatorium", "Акватория"],
   "intake_water_density": [
     "Intake water density",
-    "Плотность забортной воды [т/м^3]"
+    "Плотность забортной воды"
   ],
   "voyage_description": ["Voyage description", "Описание рейса"],
   "voyage_code": ["Voyage code", "Код рейса"],

@@ -25,6 +25,10 @@ abstract interface class Voyage {
   Map<String, String> toMap();
 
   bool isEntryDescription(String entry);
+
+  /// Returns the unit of the given [field]
+  /// if the [field] is not in the map, returns empty [String]
+  String unitsBy(String field);
 }
 
 final class JsonVoyage implements Voyage {
@@ -59,6 +63,14 @@ final class JsonVoyage implements Voyage {
 
   @override
   bool isEntryDescription(String entry) => entry == 'voyage_description';
+
+  @override
+  String unitsBy(String field) {
+    if (field == 'intake_water_density') {
+      return 't/m^3';
+    }
+    return '';
+  }
 }
 
 enum Icing {

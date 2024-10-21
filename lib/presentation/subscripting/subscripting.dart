@@ -43,7 +43,7 @@ class AppSubscripting {
   static String getMathsExpression(String str) {
     switch (str) {
       case 't/m^3':
-        return '${Localized('t/m').v}${getSuperscript('3')}';
+        return '[${Localized('t/m').v}${getSuperscript('3')}]';
       default:
         return Localized(str).v;
     }
